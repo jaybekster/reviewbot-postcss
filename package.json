@@ -1,0 +1,15 @@
+{
+  "name": "reviewbot-postcss",
+  "version": "0.1.0",
+  "description": "The postcss plugin for reviewbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikhail Tsyplakov",
+  "license": "MIT",
+  "dependencies": {
+    "postcss": "^5.0.21",
+    "stylelint": "^6.3.2"
+  }
+}
