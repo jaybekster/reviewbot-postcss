@@ -1,13 +1,19 @@
 {
   "name": "reviewbot-postcss",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The postcss plugin for reviewbot",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaybekster/reviewbot-postcss.git"
   },
   "author": "Mikhail Tsyplakov",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaybekster/reviewbot-postcss/issues"
+  },
+  "homepage": "https://github.com/jaybekster/reviewbot-postcss#readme",
   "dependencies": {
     "postcss": "^5.0.21",
     "stylelint": "^6.3.2"

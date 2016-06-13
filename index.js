@@ -26,28 +26,25 @@ module.exports = function(config) {
                 },
                 promises = [];
 
-            files.forEach(function(filePath) {
-
-                if (config.extensions.indexOf(path.extname(filePath)) === -1) {
+            files.forEach(function(filename) {
+                if (config.extensions.indexOf(path.extname(filename)) === -1) {
                     return;
                 }
 
                 var promise = new Promise(function(resolve, reject) {
-                    fs.readFile(filePath, {
+                    fs.readFile(filename, {
                         encoding: 'utf8'
                     }, function(err, fileData) {
                         if (err) {
                             throw err;
                         }
 
-                        var fileName = path.join(__dirname, filePath);
-
                         postcss([
                             stylelint(stylintrc)
                         ]).process(fileData).then(function(result) {
                             result.messages.forEach(function(message) {
                                 log.errors.push({
-                                    filename: fileName,
+                                    filename: filename,
                                     line: message.line,
                                     column: message.column,
                                     rule: message.rule,
@@ -58,11 +55,11 @@ module.exports = function(config) {
                             resolve();
                         }).catch(function(error) {
                             log.errors.push({
-                                filename: fileName,
+                                filename: filename,
                                 line: error.line,
                                 column: error.column,
                                 message: String(error.reason).replace("\n", '')
-                            })
+                            });
 
                             resolve();
                         });
@@ -78,8 +75,6 @@ module.exports = function(config) {
                 }
                 done(log);
             });
-
         }
-
-    }
-}
+    };
+};
